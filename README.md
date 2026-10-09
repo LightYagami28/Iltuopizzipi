@@ -11,7 +11,7 @@ node --check app.js
 node --test test/*.test.mjs
 ```
 
-GitHub Actions esegue i controlli prima del deploy su GitHub Pages. Il deploy avviene solo dopo il superamento della validazione e non viene eseguito sulle pull request.
+GitHub Actions esegue i controlli prima del deploy su GitHub Pages. Il deploy avviene solo dopo il superamento della validazione e non viene eseguito sulle pull request. Per evitare pubblicazioni non intenzionali, il job di deploy è opt-in: abilita Pages con sorgente GitHub Actions nelle impostazioni del repository e imposta la variabile repository `ENABLE_GITHUB_PAGES=true`.
 
 ## SonarCloud
 
