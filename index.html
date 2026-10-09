@@ -1,143 +1,25 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Per l'Amore della Mia Vita ❤️</title>
-
-<style>
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Georgia', serif;
-    background: linear-gradient(to top, #ff758c, #ff7eb3);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    text-align: center;
-    color: white;
-    overflow: hidden;
-}
-
-.container {
-    width: 90%;
-    max-width: 500px;
-}
-
-h1 {
-    font-size: 28px;
-    margin-bottom: 20px;
-}
-
-button {
-    padding: 15px 25px;
-    font-size: 18px;
-    background: white;
-    color: #ff4e75;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-button:active {
-    transform: scale(0.95);
-}
-
-#message {
-    margin-top: 30px;
-    font-size: 20px;
-    min-height: 100px;
-    opacity: 0;
-    transition: opacity 1s ease;
-}
-
-.final {
-    font-size: 26px;
-    font-weight: bold;
-    animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
-}
-
-.heart {
-    position: fixed;
-    bottom: -20px;
-    font-size: 20px;
-    animation: float 6s linear forwards;
-}
-
-@keyframes float {
-    from { transform: translateY(0); opacity: 1; }
-    to { transform: translateY(-110vh); opacity: 0; }
-}
-</style>
-</head>
-
-<body>
-
-<div class="container">
-    <h1>Buon San Valentino Amore Mio ❤️</h1>
-    <button onclick="startLove()">Tocca Qui 💌</button>
-    <div id="message"></div>
-</div>
-
-<script>
-const messages = [
-    "Sono passati 6 anni...",
-    "6 anni di amore vero.",
-    "6 anni in cui ti sceglierei ogni giorno.",
-    "Mi hai reso un uomo migliore.",
-    "Mi hai regalato la gioia più grande...",
-    "Sei una mamma meravigliosa.",
-    "Sei la mia casa, la mia pace, la mia forza.",
-    "E non vedo l'ora di chiamarti...",
-    "Mia Moglie ❤️"
-];
-
-let index = 0;
-
-function startLove() {
-    const msg = document.getElementById("message");
-    index = 0;
-
-    const interval = setInterval(() => {
-        msg.style.opacity = 0;
-
-        setTimeout(() => {
-            msg.innerHTML = messages[index];
-            msg.style.opacity = 1;
-            index++;
-
-            if (index === messages.length) {
-                msg.classList.add("final");
-                clearInterval(interval);
-                createHearts();
-            }
-
-        }, 500);
-
-    }, 2500);
-}
-
-function createHearts() {
-    setInterval(() => {
-        const heart = document.createElement("div");
-        heart.className = "heart";
-        heart.innerHTML = "❤️";
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.fontSize = (Math.random() * 15 + 15) + "px";
-        document.body.appendChild(heart);
-
-        setTimeout(() => heart.remove(), 6000);
-    }, 300);
-}
-</script>
-
-</body>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Un messaggio speciale per la persona che amo.">
+    <meta name="theme-color" content="#ff758c">
+    <meta name="referrer" content="no-referrer">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; form-action 'none'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self';">
+    <title>Per l'Amore della Mia Vita ❤️</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <main class="card" aria-labelledby="title">
+      <p class="eyebrow">Una piccola sorpresa</p>
+      <h1 id="title">Buon San Valentino Amore Mio ❤️</h1>
+      <p class="intro">Ho qualcosa da dirti…</p>
+      <button id="loveButton" type="button">Tocca qui 💌</button>
+      <p id="message" class="message" role="status" aria-live="polite" aria-atomic="true"></p>
+      <noscript>Per vedere il messaggio, abilita JavaScript nel browser.</noscript>
+    </main>
+    <div id="heartLayer" class="heart-layer" aria-hidden="true"></div>
+  </body>
 </html>
